@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  asurada-app:
+    build: .
+    container_name: asurada-app
+    volumes:
+      - .:/app
+      - ./assets:/app/assets
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    command: python asulada_zonos_integration.py
+    restart: unless-stopped 
