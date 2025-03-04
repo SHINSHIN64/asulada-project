@@ -7,9 +7,13 @@ services:
     volumes:
       - .:/app
       - ./assets:/app/assets
+      - ./uploads:/app/uploads
     env_file:
       - .env
     ports:
       - "8000:8000"
-    command: python asulada_zonos_integration.py
-    restart: unless-stopped 
+    command: python api_server.py
+    restart: unless-stopped
+    environment:
+      - PORT=8000
+      - DEBUG=True 
